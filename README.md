@@ -4,8 +4,9 @@ TAble 1:
 
 Table 2:   
   The code has a flaw that i calculate euler angles ground-truth while training process,so the training speed have slowed down because  some work have to be finished on the cpu ,you should calculate the euler angles in the preprocess code  
-
-sample imgs:  
+  
+  
+SAMPLE IMGS:  
 
  ![Image text](https://github.com/guoqiangqi/PFLD/blob/master/data/sample_imgs/10.jpg)
  ![Image text](https://github.com/guoqiangqi/PFLD/blob/master/data/sample_imgs/121.jpg)
