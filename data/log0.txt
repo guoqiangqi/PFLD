@@ -1,0 +1,746 @@
+['train_model.py', '--model_dir=./models2/model0', '--pretrained_model=', '--learning_rate=0.001', '--level=L1', '--debug=False', '--image_size=112', '--batch_size=64']
+Namespace(batch_size=64, debug='False', file_list='data/train_data/list.txt', image_channels=3, image_size=112, learning_rate=0.001, level='L1', lr_epoch='10,20,50,100,200,500', max_epoch=1000, model_dir='./models2/model0', pretrained_model='', save_image_example=True, seed=666, test_list='data/test_data/list.txt', weight_decay=5e-05)
+Total number of examples: 75000
+Test number of examples: 2500
+Model dir: ./models2/model0
+Number of batches per epoch: 1171
+Building training graph.
+PFLD input shape(image_batch:0): (?, 112, 112, 3)
+pfld_inference/conv_1/Relu6:0 (?, 56, 56, 64)
+pfld_inference/conv2/dwise/Relu6:0 (?, 56, 56, 64)
+pfld_inference/conv3_1/expand/BatchNorm/cond_1/Merge:0 (?, 28, 28, 128)
+pfld_inference/conv3_1/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_1/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/conv3_2/expand/BatchNorm/cond_1/Merge:0 (?, 28, 28, 128)
+pfld_inference/conv3_2/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_2/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add:0 (?, 28, 28, 64)
+pfld_inference/conv3_3/expand/BatchNorm/cond_1/Merge:0 (?, 28, 28, 128)
+pfld_inference/conv3_3/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_3linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_1:0 (?, 28, 28, 64)
+pfld_inference/conv3_4/expand/BatchNorm/cond_1/Merge:0 (?, 28, 28, 128)
+pfld_inference/conv3_4/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_4/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_2:0 (?, 28, 28, 64)
+pfld_inference/conv3_5/expand/BatchNorm/cond_1/Merge:0 (?, 28, 28, 128)
+pfld_inference/conv3_5/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_5/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_3:0 (?, 28, 28, 64)
+pfld_inference/conv4_1/expand/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/conv4_1/dwise/Relu6:0 (?, 14, 14, 128)
+pfld_inference/conv4_1/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/conv5_1/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_1/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_1/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/conv5_2/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_2/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_2/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/add_4:0 (?, 7, 7, 128)
+pfld_inference/conv5_3/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_3/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_3/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/add_5:0 (?, 7, 7, 128)
+pfld_inference/conv5_4/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_4/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_4/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/add_6:0 (?, 7, 7, 128)
+pfld_inference/conv5_5/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_5/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_5/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/add_7:0 (?, 7, 7, 128)
+pfld_inference/conv5_6/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 512)
+pfld_inference/conv5_6/dwise/Relu6:0 (?, 7, 7, 512)
+pfld_inference/conv5_6/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 128)
+pfld_inference/add_8:0 (?, 7, 7, 128)
+pfld_inference/conv6_1/expand/BatchNorm/cond_1/Merge:0 (?, 7, 7, 256)
+pfld_inference/conv6_1/dwise/Relu6:0 (?, 7, 7, 256)
+pfld_inference/conv6_1/linear/BatchNorm/cond_1/Merge:0 (?, 7, 7, 16)
+pfld_inference/conv7/BatchNorm/cond_1/Merge:0 (?, 4, 4, 32)
+pfld_inference/conv8/BatchNorm/cond_1/Merge:0 (?, 4, 4, 128)
+pfld_inference/AvgPool2D/AvgPool:0 (?, 1, 1, 16)
+pfld_inference/AvgPool2D_1/AvgPool:0 (?, 1, 1, 32)
+
+auxiliary net
+pfld_conv1/Relu:0 (?, 14, 14, 128)
+pfld_conv2/Relu:0 (?, 14, 14, 128)
+pfld_conv3/Relu:0 (?, 7, 7, 32)
+pfld_conv4/Relu:0 (?, 7, 7, 128)
+pool1/MaxPool:0 (?, 7, 7, 128)
+Flatten/flatten/Reshape:0 (?, 6272)
+pfld_fc1/BatchNorm/Reshape_1:0 (?, 32)
+pfld_fc2/BatchNorm/Reshape_1:0 (?, 3)
+2019-05-05 07:08:53.633963: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-05-05 07:08:53.957908: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: Tesla P100-PCIE-16GB major: 6 minor: 0 memoryClockRate(GHz): 1.3285
+pciBusID: 0000:83:00.0
+totalMemory: 15.90GiB freeMemory: 15.61GiB
+2019-05-05 07:08:53.958001: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla P100-PCIE-16GB, pci bus id: 0000:83:00.0, compute capability: 6.0)
+2019-05-05 07:08:53.960622: E tensorflow/stream_executor/cuda/cuda_driver.cc:936] failed to allocate 15.90G (17071734784 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+Running train.
+Epoch:[0   ][100 /1171]	Loss 110.099	L2_loss 0.005	 lr 0.001
+Epoch:[0   ][200 /1171]	Loss 54.400	L2_loss 0.005	 lr 0.001
+Epoch:[0   ][300 /1171]	Loss 41.562	L2_loss 0.005	 lr 0.001
+Epoch:[0   ][400 /1171]	Loss 142.373	L2_loss 0.005	 lr 0.001
+Epoch:[0   ][500 /1171]	Loss 443.136	L2_loss 0.006	 lr 0.001
+Epoch:[0   ][600 /1171]	Loss 71.784	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][700 /1171]	Loss 476.617	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][800 /1171]	Loss 37.938	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][900 /1171]	Loss 596.970	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][1000/1171]	Loss 28.533	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][1100/1171]	Loss 30.229	L2_loss 0.007	 lr 0.001
+Epoch:[0   ][1171/1171]	Loss 833.720	L2_loss 0.007	 lr 0.001
+Test epochs: 39	Loss 1.094
+mean error and failure rate
+mean error : 0.466
+failure rate: L1 1.000
+
+Epoch:[1   ][100 /1171]	Loss 48.516	L2_loss 0.007	 lr 0.001
+Epoch:[1   ][200 /1171]	Loss 50.575	L2_loss 0.007	 lr 0.001
+Epoch:[1   ][300 /1171]	Loss 416.522	L2_loss 0.007	 lr 0.001
+Epoch:[1   ][400 /1171]	Loss 40.513	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][500 /1171]	Loss 24.543	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][600 /1171]	Loss 26.015	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][700 /1171]	Loss 73.342	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][800 /1171]	Loss 38.344	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][900 /1171]	Loss 45.637	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][1000/1171]	Loss 26.044	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][1100/1171]	Loss 36.708	L2_loss 0.008	 lr 0.001
+Epoch:[1   ][1171/1171]	Loss 23.318	L2_loss 0.008	 lr 0.001
+Test epochs: 39	Loss 0.422
+mean error and failure rate
+mean error : 0.288
+failure rate: L1 0.973
+
+Epoch:[2   ][100 /1171]	Loss 26.551	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][200 /1171]	Loss 52.628	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][300 /1171]	Loss 48.868	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][400 /1171]	Loss 41.657	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][500 /1171]	Loss 40.628	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][600 /1171]	Loss 37.165	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][700 /1171]	Loss 37.114	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][800 /1171]	Loss 125.920	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][900 /1171]	Loss 24.889	L2_loss 0.008	 lr 0.001
+Epoch:[2   ][1000/1171]	Loss 1133.125	L2_loss 0.009	 lr 0.001
+Epoch:[2   ][1100/1171]	Loss 45.103	L2_loss 0.009	 lr 0.001
+Epoch:[2   ][1171/1171]	Loss 35.853	L2_loss 0.009	 lr 0.001
+Test epochs: 39	Loss 1.084
+mean error and failure rate
+mean error : 0.461
+failure rate: L1 0.976
+
+Epoch:[3   ][100 /1171]	Loss 35.008	L2_loss 0.009	 lr 0.001
+Epoch:[3   ][200 /1171]	Loss 79.104	L2_loss 0.009	 lr 0.001
+Epoch:[3   ][300 /1171]	Loss 33.834	L2_loss 0.009	 lr 0.001
+Epoch:[3   ][400 /1171]	Loss 32.727	L2_loss 0.010	 lr 0.001
+Epoch:[3   ][500 /1171]	Loss 59.660	L2_loss 0.010	 lr 0.001
+Epoch:[3   ][600 /1171]	Loss 101.127	L2_loss 0.010	 lr 0.001
+Epoch:[3   ][700 /1171]	Loss 85.086	L2_loss 0.012	 lr 0.001
+Epoch:[3   ][800 /1171]	Loss 29.711	L2_loss 0.012	 lr 0.001
+Epoch:[3   ][900 /1171]	Loss 24.501	L2_loss 0.013	 lr 0.001
+Epoch:[3   ][1000/1171]	Loss 34.517	L2_loss 0.013	 lr 0.001
+Epoch:[3   ][1100/1171]	Loss 107.096	L2_loss 0.013	 lr 0.001
+2019-05-05 10:25:30.947286: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9827 of 10000
+2019-05-05 10:25:31.148275: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[3   ][1171/1171]	Loss 19.074	L2_loss 0.013	 lr 0.001
+Test epochs: 39	Loss 0.410
+mean error and failure rate
+mean error : 0.280
+failure rate: L1 0.887
+
+Epoch:[4   ][100 /1171]	Loss 43.606	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][200 /1171]	Loss 79.493	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][300 /1171]	Loss 33.827	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][400 /1171]	Loss 36.428	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][500 /1171]	Loss 51.933	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][600 /1171]	Loss 182.388	L2_loss 0.013	 lr 0.001
+Epoch:[4   ][700 /1171]	Loss 4111.498	L2_loss 0.014	 lr 0.001
+Epoch:[4   ][800 /1171]	Loss 920.963	L2_loss 0.029	 lr 0.001
+Epoch:[4   ][900 /1171]	Loss 48.338	L2_loss 0.030	 lr 0.001
+Epoch:[4   ][1000/1171]	Loss 29.935	L2_loss 0.030	 lr 0.001
+Epoch:[4   ][1100/1171]	Loss 94.497	L2_loss 0.031	 lr 0.001
+2019-05-05 11:44:02.473705: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8521 of 10000
+2019-05-05 11:44:04.222462: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[4   ][1171/1171]	Loss 28.511	L2_loss 0.031	 lr 0.001
+Test epochs: 39	Loss 0.409
+mean error and failure rate
+mean error : 0.281
+failure rate: L1 0.904
+
+Epoch:[5   ][100 /1171]	Loss 31.080	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][200 /1171]	Loss 24.280	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][300 /1171]	Loss 148.222	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][400 /1171]	Loss 42.771	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][500 /1171]	Loss 74.586	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][600 /1171]	Loss 37.938	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][700 /1171]	Loss 35.349	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][800 /1171]	Loss 1651.860	L2_loss 0.031	 lr 0.001
+Epoch:[5   ][900 /1171]	Loss 35.914	L2_loss 0.032	 lr 0.001
+Epoch:[5   ][1000/1171]	Loss 77.354	L2_loss 0.032	 lr 0.001
+Epoch:[5   ][1100/1171]	Loss 31.237	L2_loss 0.032	 lr 0.001
+2019-05-05 13:24:32.491849: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9163 of 10000
+2019-05-05 13:24:33.451167: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[5   ][1171/1171]	Loss 25.373	L2_loss 0.032	 lr 0.001
+Test epochs: 39	Loss 0.394
+mean error and failure rate
+mean error : 0.284
+failure rate: L1 0.931
+
+Epoch:[6   ][100 /1171]	Loss 31.108	L2_loss 0.032	 lr 0.001
+Epoch:[6   ][200 /1171]	Loss 23.621	L2_loss 0.032	 lr 0.001
+Epoch:[6   ][300 /1171]	Loss 28.277	L2_loss 0.032	 lr 0.001
+Epoch:[6   ][400 /1171]	Loss 38.194	L2_loss 0.032	 lr 0.001
+Epoch:[6   ][500 /1171]	Loss 152.846	L2_loss 0.033	 lr 0.001
+Epoch:[6   ][600 /1171]	Loss 48.038	L2_loss 0.033	 lr 0.001
+Epoch:[6   ][700 /1171]	Loss 43.901	L2_loss 0.033	 lr 0.001
+Epoch:[6   ][800 /1171]	Loss 53.798	L2_loss 0.034	 lr 0.001
+Epoch:[6   ][900 /1171]	Loss 41.845	L2_loss 0.034	 lr 0.001
+Epoch:[6   ][1000/1171]	Loss 29.832	L2_loss 0.034	 lr 0.001
+Epoch:[6   ][1100/1171]	Loss 215.293	L2_loss 0.035	 lr 0.001
+2019-05-05 15:14:49.940397: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8288 of 10000
+2019-05-05 15:14:51.919182: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[6   ][1171/1171]	Loss 40.243	L2_loss 0.037	 lr 0.001
+Test epochs: 39	Loss 0.511
+mean error and failure rate
+mean error : 0.326
+failure rate: L1 0.976
+
+Epoch:[7   ][100 /1171]	Loss 50.361	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][200 /1171]	Loss 34.611	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][300 /1171]	Loss 28.633	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][400 /1171]	Loss 40.425	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][500 /1171]	Loss 103.770	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][600 /1171]	Loss 28.041	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][700 /1171]	Loss 32.066	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][800 /1171]	Loss 30.795	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][900 /1171]	Loss 26.969	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][1000/1171]	Loss 23.982	L2_loss 0.037	 lr 0.001
+Epoch:[7   ][1100/1171]	Loss 39.985	L2_loss 0.037	 lr 0.001
+2019-05-05 17:15:23.975784: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8347 of 10000
+2019-05-05 17:15:25.951699: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[7   ][1171/1171]	Loss 30.676	L2_loss 0.037	 lr 0.001
+Test epochs: 39	Loss 0.401
+mean error and failure rate
+mean error : 0.278
+failure rate: L1 0.860
+
+Epoch:[8   ][100 /1171]	Loss 59.871	L2_loss 0.038	 lr 0.001
+Epoch:[8   ][200 /1171]	Loss 36.743	L2_loss 0.038	 lr 0.001
+Epoch:[8   ][300 /1171]	Loss 376.841	L2_loss 0.039	 lr 0.001
+Epoch:[8   ][400 /1171]	Loss 49.417	L2_loss 0.041	 lr 0.001
+Epoch:[8   ][500 /1171]	Loss 80.097	L2_loss 0.041	 lr 0.001
+Epoch:[8   ][600 /1171]	Loss 33.951	L2_loss 0.042	 lr 0.001
+Epoch:[8   ][700 /1171]	Loss 34.785	L2_loss 0.042	 lr 0.001
+Epoch:[8   ][800 /1171]	Loss 27.319	L2_loss 0.042	 lr 0.001
+Epoch:[8   ][900 /1171]	Loss 42.874	L2_loss 0.045	 lr 0.001
+Epoch:[8   ][1000/1171]	Loss 47.310	L2_loss 0.045	 lr 0.001
+Epoch:[8   ][1100/1171]	Loss 31.593	L2_loss 0.046	 lr 0.001
+2019-05-05 19:26:03.539317: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8478 of 10000
+2019-05-05 19:26:05.283706: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[8   ][1171/1171]	Loss 18.464	L2_loss 0.046	 lr 0.001
+Test epochs: 39	Loss 0.885
+mean error and failure rate
+mean error : 0.380
+failure rate: L1 0.910
+
+Epoch:[9   ][100 /1171]	Loss 30.666	L2_loss 0.046	 lr 0.001
+Epoch:[9   ][200 /1171]	Loss 51.997	L2_loss 0.046	 lr 0.001
+Epoch:[9   ][300 /1171]	Loss 33.118	L2_loss 0.046	 lr 0.001
+Epoch:[9   ][400 /1171]	Loss 22.846	L2_loss 0.046	 lr 0.001
+Epoch:[9   ][500 /1171]	Loss 217.032	L2_loss 0.047	 lr 0.001
+Epoch:[9   ][600 /1171]	Loss 55.833	L2_loss 0.054	 lr 0.001
+Epoch:[9   ][700 /1171]	Loss 48.733	L2_loss 0.057	 lr 0.001
+Epoch:[9   ][800 /1171]	Loss 30.791	L2_loss 0.057	 lr 0.001
+Epoch:[9   ][900 /1171]	Loss 31.090	L2_loss 0.058	 lr 0.001
+Epoch:[9   ][1000/1171]	Loss 27.049	L2_loss 0.058	 lr 0.001
+Epoch:[9   ][1100/1171]	Loss 933.150	L2_loss 0.059	 lr 0.001
+Epoch:[9   ][1171/1171]	Loss 1442.476	L2_loss 0.101	 lr 0.001
+Test epochs: 39	Loss 8251.418
+mean error and failure rate
+mean error : 40.161
+failure rate: L1 0.976
+
+2019-05-05 21:47:41.651619: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8678 of 10000
+2019-05-05 21:47:43.271121: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[10  ][100 /1171]	Loss 54.982	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][200 /1171]	Loss 52.369	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][300 /1171]	Loss 34.324	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][400 /1171]	Loss 36.172	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][500 /1171]	Loss 35.788	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][600 /1171]	Loss 45.559	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][700 /1171]	Loss 38.410	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][800 /1171]	Loss 32.638	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][900 /1171]	Loss 32.422	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][1000/1171]	Loss 18.340	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][1100/1171]	Loss 25.242	L2_loss 0.103	 lr 0.0001
+Epoch:[10  ][1171/1171]	Loss 38.949	L2_loss 0.103	 lr 0.0001
+Test epochs: 39	Loss 0.369
+mean error and failure rate
+mean error : 0.271
+failure rate: L1 0.872
+
+2019-05-06 00:19:50.195420: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6372 of 10000
+2019-05-06 00:19:54.573393: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[11  ][100 /1171]	Loss 35.023	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][200 /1171]	Loss 30.487	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][300 /1171]	Loss 43.399	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][400 /1171]	Loss 26.526	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][500 /1171]	Loss 25.817	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][600 /1171]	Loss 19.874	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][700 /1171]	Loss 20.014	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][800 /1171]	Loss 32.429	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][900 /1171]	Loss 28.673	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][1000/1171]	Loss 37.782	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][1100/1171]	Loss 24.179	L2_loss 0.103	 lr 0.0001
+Epoch:[11  ][1171/1171]	Loss 21.302	L2_loss 0.103	 lr 0.0001
+2019-05-06 03:04:35.183307: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2404 of 10000
+2019-05-06 03:04:36.204120: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.386
+mean error and failure rate
+mean error : 0.275
+failure rate: L1 0.859
+
+2019-05-06 03:05:07.613104: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2408 of 10000
+2019-05-06 03:05:17.596203: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6822 of 10000
+2019-05-06 03:05:21.893934: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[12  ][100 /1171]	Loss 39.012	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][200 /1171]	Loss 33.148	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][300 /1171]	Loss 15.952	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][400 /1171]	Loss 22.778	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][500 /1171]	Loss 41.945	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][600 /1171]	Loss 24.179	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][700 /1171]	Loss 38.126	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][800 /1171]	Loss 28.412	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][900 /1171]	Loss 22.424	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][1000/1171]	Loss 20.220	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][1100/1171]	Loss 27.642	L2_loss 0.103	 lr 0.0001
+Epoch:[12  ][1171/1171]	Loss 15.615	L2_loss 0.103	 lr 0.0001
+Test epochs: 39	Loss 0.375
+mean error and failure rate
+mean error : 0.273
+failure rate: L1 0.864
+
+2019-05-06 05:55:58.761572: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2051 of 10000
+2019-05-06 05:56:08.748406: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6177 of 10000
+2019-05-06 05:56:13.613819: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[13  ][100 /1171]	Loss 19.834	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][200 /1171]	Loss 23.855	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][300 /1171]	Loss 30.833	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][400 /1171]	Loss 39.006	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][500 /1171]	Loss 39.140	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][600 /1171]	Loss 22.049	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][700 /1171]	Loss 24.250	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][800 /1171]	Loss 22.196	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][900 /1171]	Loss 24.502	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][1000/1171]	Loss 24.753	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][1100/1171]	Loss 52.224	L2_loss 0.103	 lr 0.0001
+Epoch:[13  ][1171/1171]	Loss 21.559	L2_loss 0.103	 lr 0.0001
+Test epochs: 39	Loss 0.387
+mean error and failure rate
+mean error : 0.276
+failure rate: L1 0.863
+
+2019-05-06 08:58:10.488932: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1591 of 10000
+2019-05-06 08:58:20.489348: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5848 of 10000
+2019-05-06 08:58:26.213121: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[14  ][100 /1171]	Loss 28.892	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][200 /1171]	Loss 27.484	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][300 /1171]	Loss 28.068	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][400 /1171]	Loss 57.720	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][500 /1171]	Loss 51.590	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][600 /1171]	Loss 37.456	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][700 /1171]	Loss 27.681	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][800 /1171]	Loss 27.061	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][900 /1171]	Loss 27.128	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][1000/1171]	Loss 35.260	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][1100/1171]	Loss 18.233	L2_loss 0.103	 lr 0.0001
+Epoch:[14  ][1171/1171]	Loss 30.073	L2_loss 0.103	 lr 0.0001
+Test epochs: 39	Loss 0.362
+mean error and failure rate
+mean error : 0.266
+failure rate: L1 0.854
+
+2019-05-06 12:22:54.592896: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1527 of 10000
+2019-05-06 12:23:04.578770: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4614 of 10000
+2019-05-06 12:23:12.077246: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[15  ][100 /1171]	Loss 32.198	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][200 /1171]	Loss 20.127	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][300 /1171]	Loss 33.744	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][400 /1171]	Loss 35.091	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][500 /1171]	Loss 20.066	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][600 /1171]	Loss 37.874	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][700 /1171]	Loss 26.296	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][800 /1171]	Loss 35.562	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][900 /1171]	Loss 30.061	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][1000/1171]	Loss 28.235	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][1100/1171]	Loss 31.230	L2_loss 0.103	 lr 0.0001
+Epoch:[15  ][1171/1171]	Loss 25.074	L2_loss 0.103	 lr 0.0001
+Test epochs: 39	Loss 0.359
+mean error and failure rate
+mean error : 0.265
+failure rate: L1 0.862
+
+2019-05-06 16:05:41.766585: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1888 of 10000
+2019-05-06 16:05:51.762529: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6335 of 10000
+2019-05-06 16:05:56.555070: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[16  ][100 /1171]	Loss 52.015	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][200 /1171]	Loss 23.490	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][300 /1171]	Loss 21.591	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][400 /1171]	Loss 51.613	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][500 /1171]	Loss 27.216	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][600 /1171]	Loss 21.019	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][700 /1171]	Loss 32.257	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][800 /1171]	Loss 39.016	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][900 /1171]	Loss 31.218	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][1000/1171]	Loss 22.423	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][1100/1171]	Loss 50.756	L2_loss 0.103	 lr 0.0001
+Epoch:[16  ][1171/1171]	Loss 22.295	L2_loss 0.103	 lr 0.0001
+2019-05-06 20:02:21.598555: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 923 of 10000
+2019-05-06 20:02:31.709134: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2064 of 10000
+2019-05-06 20:02:35.940533: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.298
+mean error and failure rate
+mean error : 0.242
+failure rate: L1 0.862
+
+2019-05-06 20:04:14.122808: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2274 of 10000
+2019-05-06 20:04:23.950235: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5642 of 10000
+2019-05-06 20:04:34.014650: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9246 of 10000
+2019-05-06 20:04:38.404077: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[17  ][100 /1171]	Loss 22.007	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][200 /1171]	Loss 30.327	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][300 /1171]	Loss 24.113	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][400 /1171]	Loss 25.424	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][500 /1171]	Loss 38.533	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][600 /1171]	Loss 29.436	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][700 /1171]	Loss 21.100	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][800 /1171]	Loss 22.663	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][900 /1171]	Loss 25.586	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][1000/1171]	Loss 20.730	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][1100/1171]	Loss 27.327	L2_loss 0.103	 lr 0.0001
+Epoch:[17  ][1171/1171]	Loss 24.035	L2_loss 0.103	 lr 0.0001
+2019-05-07 00:20:41.713157: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1402 of 10000
+2019-05-07 00:20:49.580040: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.257
+mean error and failure rate
+mean error : 0.222
+failure rate: L1 0.817
+
+2019-05-07 00:22:44.872633: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2419 of 10000
+2019-05-07 00:22:54.962941: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5837 of 10000
+2019-05-07 00:23:01.697253: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[18  ][100 /1171]	Loss 17.999	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][200 /1171]	Loss 23.325	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][300 /1171]	Loss 19.859	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][400 /1171]	Loss 29.098	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][500 /1171]	Loss 18.251	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][600 /1171]	Loss 10.938	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][700 /1171]	Loss 9.899	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][800 /1171]	Loss 15.609	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][900 /1171]	Loss 26.884	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][1000/1171]	Loss 17.766	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][1100/1171]	Loss 12.663	L2_loss 0.103	 lr 0.0001
+Epoch:[18  ][1171/1171]	Loss 9.458	L2_loss 0.103	 lr 0.0001
+2019-05-07 04:45:34.516498: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1284 of 10000
+2019-05-07 04:45:44.607759: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2057 of 10000
+2019-05-07 04:45:52.643637: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.164
+mean error and failure rate
+mean error : 0.173
+failure rate: L1 0.669
+
+2019-05-07 04:48:03.930620: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1473 of 10000
+2019-05-07 04:48:13.852421: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3437 of 10000
+2019-05-07 04:48:23.855045: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7005 of 10000
+2019-05-07 04:48:28.070207: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[19  ][100 /1171]	Loss 7.667	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][200 /1171]	Loss 15.359	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][300 /1171]	Loss 17.461	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][400 /1171]	Loss 9.994	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][500 /1171]	Loss 10.349	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][600 /1171]	Loss 14.107	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][700 /1171]	Loss 10.051	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][800 /1171]	Loss 15.067	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][900 /1171]	Loss 8.515	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][1000/1171]	Loss 11.834	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][1100/1171]	Loss 11.482	L2_loss 0.103	 lr 0.0001
+Epoch:[19  ][1171/1171]	Loss 12.271	L2_loss 0.103	 lr 0.0001
+2019-05-07 09:23:21.089972: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 141 of 10000
+2019-05-07 09:23:31.025110: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1439 of 10000
+2019-05-07 09:23:39.844681: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.155
+mean error and failure rate
+mean error : 0.168
+failure rate: L1 0.723
+
+2019-05-07 09:26:19.375579: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 458 of 10000
+2019-05-07 09:26:29.354000: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2573 of 10000
+2019-05-07 09:26:39.328552: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5437 of 10000
+2019-05-07 09:26:46.422544: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[20  ][100 /1171]	Loss 9.406	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][200 /1171]	Loss 14.478	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][300 /1171]	Loss 10.141	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][400 /1171]	Loss 17.203	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][500 /1171]	Loss 12.248	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][600 /1171]	Loss 9.710	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][700 /1171]	Loss 7.154	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][800 /1171]	Loss 20.840	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][900 /1171]	Loss 13.766	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][1000/1171]	Loss 7.893	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][1100/1171]	Loss 6.488	L2_loss 0.103	 lr 1e-05
+Epoch:[20  ][1171/1171]	Loss 11.042	L2_loss 0.103	 lr 1e-05
+2019-05-07 14:08:01.211024: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1650 of 10000
+2019-05-07 14:08:09.941128: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.126
+mean error and failure rate
+mean error : 0.151
+failure rate: L1 0.630
+
+2019-05-07 14:10:56.093810: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1552 of 10000
+2019-05-07 14:11:06.026284: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4098 of 10000
+2019-05-07 14:11:16.263355: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6291 of 10000
+2019-05-07 14:11:26.012692: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8103 of 10000
+2019-05-07 14:11:35.499899: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[21  ][100 /1171]	Loss 12.202	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][200 /1171]	Loss 9.852	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][300 /1171]	Loss 6.719	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][400 /1171]	Loss 11.367	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][500 /1171]	Loss 12.320	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][600 /1171]	Loss 14.027	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][700 /1171]	Loss 10.039	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][800 /1171]	Loss 8.731	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][900 /1171]	Loss 10.249	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][1000/1171]	Loss 12.091	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][1100/1171]	Loss 9.014	L2_loss 0.103	 lr 1e-05
+Epoch:[21  ][1171/1171]	Loss 11.931	L2_loss 0.103	 lr 1e-05
+2019-05-07 19:07:48.720572: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1428 of 10000
+2019-05-07 19:07:58.800756: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1934 of 10000
+2019-05-07 19:08:02.596719: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.130
+mean error and failure rate
+mean error : 0.153
+failure rate: L1 0.648
+
+2019-05-07 19:11:12.852581: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1396 of 10000
+2019-05-07 19:11:22.854983: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3771 of 10000
+2019-05-07 19:11:32.824274: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7559 of 10000
+2019-05-07 19:11:40.720907: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[22  ][100 /1171]	Loss 8.645	L2_loss 0.103	 lr 1e-05
+Epoch:[22  ][200 /1171]	Loss 10.655	L2_loss 0.103	 lr 1e-05
+Epoch:[22  ][300 /1171]	Loss 11.675	L2_loss 0.103	 lr 1e-05
+Epoch:[22  ][400 /1171]	Loss 14.309	L2_loss 0.103	 lr 1e-05
+Epoch:[22  ][500 /1171]	Loss 12.875	L2_loss 0.103	 lr 1e-05
+Epoch:[22  ][600 /1171]	Loss 11.422	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][700 /1171]	Loss 25.659	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][800 /1171]	Loss 8.812	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][900 /1171]	Loss 24.637	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][1000/1171]	Loss 6.888	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][1100/1171]	Loss 7.527	L2_loss 0.102	 lr 1e-05
+Epoch:[22  ][1171/1171]	Loss 9.393	L2_loss 0.102	 lr 1e-05
+2019-05-08 00:13:28.237881: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 378 of 10000
+2019-05-08 00:13:38.218635: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1617 of 10000
+2019-05-08 00:13:49.185336: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1796 of 10000
+2019-05-08 00:13:58.216219: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2244 of 10000
+2019-05-08 00:13:59.993494: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.120
+mean error and failure rate
+mean error : 0.148
+failure rate: L1 0.625
+
+2019-05-08 00:17:33.434030: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 224 of 10000
+2019-05-08 00:17:43.434012: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2713 of 10000
+2019-05-08 00:17:53.434073: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5675 of 10000
+2019-05-08 00:18:03.470721: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7351 of 10000
+2019-05-08 00:18:13.434195: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9793 of 10000
+2019-05-08 00:18:14.645934: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[23  ][100 /1171]	Loss 14.127	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][200 /1171]	Loss 11.478	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][300 /1171]	Loss 19.723	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][400 /1171]	Loss 8.922	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][500 /1171]	Loss 10.232	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][600 /1171]	Loss 12.319	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][700 /1171]	Loss 7.297	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][800 /1171]	Loss 11.338	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][900 /1171]	Loss 8.260	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][1000/1171]	Loss 21.058	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][1100/1171]	Loss 12.319	L2_loss 0.102	 lr 1e-05
+Epoch:[23  ][1171/1171]	Loss 13.744	L2_loss 0.102	 lr 1e-05
+2019-05-08 05:37:54.846618: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 538 of 10000
+2019-05-08 05:38:04.910351: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1475 of 10000
+2019-05-08 05:38:14.898151: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1589 of 10000
+2019-05-08 05:38:24.928367: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1752 of 10000
+2019-05-08 05:38:34.957766: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2059 of 10000
+2019-05-08 05:38:38.023082: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.123
+mean error and failure rate
+mean error : 0.149
+failure rate: L1 0.635
+
+2019-05-08 05:42:28.180040: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 777 of 10000
+2019-05-08 05:42:38.120736: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 874 of 10000
+2019-05-08 05:42:48.118569: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 961 of 10000
+2019-05-08 05:42:58.874475: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1695 of 10000
+2019-05-08 05:43:09.853234: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1742 of 10000
+2019-05-08 05:43:18.230120: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1808 of 10000
+2019-05-08 05:43:29.462541: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1847 of 10000
+2019-05-08 05:43:38.084310: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2646 of 10000
+2019-05-08 05:43:48.047709: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4872 of 10000
+2019-05-08 05:43:58.155415: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5605 of 10000
+2019-05-08 05:44:08.064730: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5943 of 10000
+2019-05-08 05:44:18.090083: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6715 of 10000
+2019-05-08 05:44:28.048274: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8187 of 10000
+2019-05-08 05:44:37.974708: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[24  ][100 /1171]	Loss 7.255	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][200 /1171]	Loss 8.157	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][300 /1171]	Loss 8.495	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][400 /1171]	Loss 8.724	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][500 /1171]	Loss 11.887	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][600 /1171]	Loss 8.954	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][700 /1171]	Loss 9.371	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][800 /1171]	Loss 14.576	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][900 /1171]	Loss 13.325	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][1000/1171]	Loss 12.005	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][1100/1171]	Loss 11.691	L2_loss 0.102	 lr 1e-05
+Epoch:[24  ][1171/1171]	Loss 7.858	L2_loss 0.102	 lr 1e-05
+2019-05-08 10:42:16.551867: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 740 of 10000
+2019-05-08 10:42:26.662709: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1039 of 10000
+2019-05-08 10:42:36.731183: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1397 of 10000
+2019-05-08 10:42:47.307135: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1713 of 10000
+2019-05-08 10:42:56.491137: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2116 of 10000
+2019-05-08 10:42:59.587207: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.120
+mean error and failure rate
+mean error : 0.147
+failure rate: L1 0.618
+
+2019-05-08 10:46:50.405581: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 360 of 10000
+2019-05-08 10:47:00.392842: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 917 of 10000
+2019-05-08 10:47:10.413596: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2452 of 10000
+2019-05-08 10:47:20.393180: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4129 of 10000
+2019-05-08 10:47:30.393244: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6409 of 10000
+2019-05-08 10:47:40.619568: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6701 of 10000
+2019-05-08 10:47:50.399768: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7132 of 10000
+2019-05-08 10:48:00.450252: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7971 of 10000
+2019-05-08 10:48:11.789218: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8791 of 10000
+2019-05-08 10:48:20.432911: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9202 of 10000
+2019-05-08 10:48:27.780106: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[25  ][100 /1171]	Loss 11.438	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][200 /1171]	Loss 7.581	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][300 /1171]	Loss 7.066	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][400 /1171]	Loss 17.286	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][500 /1171]	Loss 8.491	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][600 /1171]	Loss 11.625	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][700 /1171]	Loss 10.538	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][800 /1171]	Loss 9.958	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][900 /1171]	Loss 6.775	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][1000/1171]	Loss 7.565	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][1100/1171]	Loss 13.786	L2_loss 0.102	 lr 1e-05
+Epoch:[25  ][1171/1171]	Loss 9.057	L2_loss 0.102	 lr 1e-05
+2019-05-08 15:58:42.618044: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 523 of 10000
+2019-05-08 15:58:52.686467: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 850 of 10000
+2019-05-08 15:59:02.645823: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1307 of 10000
+2019-05-08 15:59:12.622059: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2359 of 10000
+2019-05-08 15:59:14.219159: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.116
+mean error and failure rate
+mean error : 0.144
+failure rate: L1 0.626
+
+2019-05-08 16:03:30.934977: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1003 of 10000
+2019-05-08 16:03:40.956878: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1480 of 10000
+2019-05-08 16:03:50.928478: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2456 of 10000
+2019-05-08 16:04:01.328747: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3807 of 10000
+2019-05-08 16:04:11.031930: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4112 of 10000
+2019-05-08 16:04:20.943041: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4512 of 10000
+2019-05-08 16:04:30.920133: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4957 of 10000
+2019-05-08 16:04:40.912683: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5511 of 10000
+2019-05-08 16:04:50.955165: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7029 of 10000
+2019-05-08 16:05:01.063628: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7492 of 10000
+2019-05-08 16:05:10.950313: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8111 of 10000
+2019-05-08 16:05:20.929567: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9802 of 10000
+2019-05-08 16:05:22.426509: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[26  ][100 /1171]	Loss 8.150	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][200 /1171]	Loss 9.372	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][300 /1171]	Loss 6.712	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][400 /1171]	Loss 10.309	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][500 /1171]	Loss 16.847	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][600 /1171]	Loss 9.155	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][700 /1171]	Loss 14.433	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][800 /1171]	Loss 7.120	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][900 /1171]	Loss 7.646	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][1000/1171]	Loss 8.376	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][1100/1171]	Loss 12.073	L2_loss 0.102	 lr 1e-05
+Epoch:[26  ][1171/1171]	Loss 8.507	L2_loss 0.102	 lr 1e-05
+2019-05-08 21:35:21.834571: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 32 of 10000
+2019-05-08 21:35:31.809715: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 164 of 10000
+2019-05-08 21:35:41.830506: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 445 of 10000
+2019-05-08 21:35:51.809117: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1024 of 10000
+2019-05-08 21:36:01.875125: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1499 of 10000
+2019-05-08 21:36:11.818542: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1808 of 10000
+2019-05-08 21:36:21.855571: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2266 of 10000
+2019-05-08 21:36:26.859876: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.114
+mean error and failure rate
+mean error : 0.144
+failure rate: L1 0.600
+
+2019-05-08 21:41:13.333083: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 565 of 10000
+2019-05-08 21:41:23.273549: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1260 of 10000
+2019-05-08 21:41:33.302621: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2120 of 10000
+2019-05-08 21:41:43.327134: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3057 of 10000
+2019-05-08 21:41:53.538233: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3808 of 10000
+2019-05-08 21:42:03.291821: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 4432 of 10000
+2019-05-08 21:42:13.282724: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5165 of 10000
+2019-05-08 21:42:23.270950: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 5930 of 10000
+2019-05-08 21:42:33.290646: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 6639 of 10000
+2019-05-08 21:42:43.317203: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7493 of 10000
+2019-05-08 21:42:53.649276: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 8318 of 10000
+2019-05-08 21:43:03.686861: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9013 of 10000
+2019-05-08 21:43:13.614049: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 9672 of 10000
+2019-05-08 21:43:18.281804: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[27  ][100 /1171]	Loss 12.650	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][200 /1171]	Loss 11.449	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][300 /1171]	Loss 8.505	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][400 /1171]	Loss 7.691	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][500 /1171]	Loss 9.705	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][600 /1171]	Loss 14.439	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][700 /1171]	Loss 6.336	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][800 /1171]	Loss 8.174	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][900 /1171]	Loss 7.135	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][1000/1171]	Loss 5.828	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][1100/1171]	Loss 9.978	L2_loss 0.102	 lr 1e-05
+Epoch:[27  ][1171/1171]	Loss 8.645	L2_loss 0.102	 lr 1e-05
+2019-05-09 03:19:39.700953: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 2263 of 10000
+2019-05-09 03:19:41.277598: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Test epochs: 39	Loss 0.117
+mean error and failure rate
+mean error : 0.144
+failure rate: L1 0.611
+
+2019-05-09 03:24:59.098972: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 1129 of 10000
+2019-05-09 03:25:09.095549: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 3335 of 10000
+2019-05-09 03:25:19.095399: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7454 of 10000
+2019-05-09 03:25:23.712854: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[28  ][100 /1171]	Loss 14.770	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][200 /1171]	Loss 17.431	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][300 /1171]	Loss 4.888	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][400 /1171]	Loss 7.759	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][500 /1171]	Loss 12.302	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][600 /1171]	Loss 8.725	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][700 /1171]	Loss 8.695	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][800 /1171]	Loss 8.078	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][900 /1171]	Loss 14.743	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][1000/1171]	Loss 9.558	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][1100/1171]	Loss 8.812	L2_loss 0.102	 lr 1e-05
+Epoch:[28  ][1171/1171]	Loss 10.252	L2_loss 0.102	 lr 1e-05
+Test epochs: 39	Loss 0.115
+mean error and failure rate
+mean error : 0.145
+failure rate: L1 0.608
+
+2019-05-09 08:50:50.205674: I tensorflow/core/kernels/shuffle_dataset_op.cc:110] Filling up shuffle buffer (this may take a while): 7441 of 10000
+2019-05-09 08:50:53.711937: I tensorflow/core/kernels/shuffle_dataset_op.cc:121] Shuffle buffer filled.
+Epoch:[29  ][100 /1171]	Loss 7.435	L2_loss 0.102	 lr 1e-05
+Epoch:[29  ][200 /1171]	Loss 8.892	L2_loss 0.102	 lr 1e-05
+Epoch:[29  ][300 /1171]	Loss 10.241	L2_loss 0.102	 lr 1e-05
+Epoch:[29  ][400 /1171]	Loss 7.155	L2_loss 0.102	 lr 1e-05
