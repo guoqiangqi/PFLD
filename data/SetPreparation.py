@@ -7,6 +7,7 @@ import shutil
 debug = False
 #debug = True
 
+from euler_angles_utils import calculate_pitch_yaw_roll
 
 def rotate(angle, center, landmark):
     rad = angle * np.pi / 180.0
@@ -143,17 +144,28 @@ class ImageDate():
                 self.imgs.append(imgT)
                 self.landmarks.append(landmark)
     def save_data(self, path, prefix):
-        attributes = [self.pose, self.expression, self.illumination, self.make_up, self.occlusion,self.blur]
+        attributes = [self.pose, self.expression, self.illumination, self.make_up, self.occlusion, self.blur]
         attributes = np.asarray(attributes, dtype=np.int32)
         attributes_str = ' '.join(list(map(str, attributes)))
         labels = []
+        TRACKED_POINTS = [33, 38, 50, 46, 60, 64, 68, 72, 55, 59, 76, 82, 85, 16]
         for i, (img, lanmark) in enumerate(zip(self.imgs, self.landmarks)):
             assert lanmark.shape == (98, 2)
             save_path = os.path.join(path, prefix+'_'+str(i)+'.png')
             assert not os.path.exists(save_path), save_path
             cv2.imwrite(save_path, img)
+
+            euler_angles_landmark = []
+            for index in TRACKED_POINTS:
+                euler_angles_landmark.append(lanmark[index])
+            euler_angles_landmark = np.asarray(euler_angles_landmark).reshape((-1, 28))
+            pitch, yaw, roll = calculate_pitch_yaw_roll(euler_angles_landmark[0])
+            euler_angles = np.asarray((pitch, yaw, roll), dtype=np.float32)
+            euler_angles_str = ' '.join(list(map(str, euler_angles)))
+
             landmark_str = ' '.join(list(map(str,lanmark.reshape(-1).tolist())))
-            label = '{} {} {}\n'.format(save_path, landmark_str, attributes_str)
+
+            label = '{} {} {} {}\n'.format(save_path, landmark_str, attributes_str, euler_angles_str)
             labels.append(label)
         return labels
 def get_dataset_list(imgDir, outDir, landmarkDir, is_train):
@@ -183,11 +195,11 @@ def get_dataset_list(imgDir, outDir, landmarkDir, is_train):
 
 if __name__ == '__main__':
     root_dir = os.path.dirname(os.path.realpath(__file__))
-    imageDirs = 'raw'
-    Mirror_file = 'annotations/Mirror98.txt'
+    imageDirs = '/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_images'
+    Mirror_file = 'Mirror98.txt'
 
-    landmarkDirs = ['annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
-                    'annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
+    landmarkDirs = ['/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
+                    '/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
 
     outDirs = ['test_data', 'train_data']
     for landmarkDir, outDir in zip(landmarkDirs, outDirs):
