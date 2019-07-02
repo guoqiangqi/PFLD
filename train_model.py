@@ -26,10 +26,8 @@ log_dir = './tensorboard'
 def main(args):
     debug = (args.debug == 'True')
     print(args)
-    # 定义随机数
     np.random.seed(args.seed)
     with tf.Graph().as_default():
-        # 数据预处理 获取 dataset
         train_dataset, num_train_file = DateSet(args.file_list, args, debug)
         test_dataset, num_test_file = DateSet(args.test_list, args, debug)
         list_ops = {}
@@ -89,27 +87,19 @@ def main(args):
         print('Building training graph.')
         # total_loss, landmarks, heatmaps_loss, heatmaps= create_model(image_batch, landmark_batch,\
         #                                                                                phase_train_placeholder, args)
-
-        # 通过模型计算获取 landmarks 和 loss, 及 euler, 创建整个网络结构图（主干网络，辅助网络）
         landmarks_pre, landmarks_loss, euler_angles_pre = create_model(image_batch, landmark_batch,\
                                                                               phase_train_placeholder, args)
 
-        # loss 求解图设计
         L2_loss = tf.add_n(tf.losses.get_regularization_losses())
 
-        # 累计计算 euler 误差
         _sum_k = tf.reduce_sum(tf.map_fn(lambda x: 1 - tf.cos(abs(x)), euler_angles_gt_batch - euler_angles_pre), axis=1)
 
-        # 累计计算 landmarks 误差
         loss_sum = tf.reduce_sum(tf.square(landmark_batch - landmarks_pre), axis=1)
 
-        # 累计 euler 与 landmarks 误差 乘以 权重 w , 求平均loss
         loss_sum = tf.reduce_mean(loss_sum*_sum_k*w_n)
 
-        # loss_sum l2 正则化
         loss_sum += L2_loss
 
-        # ?
         train_op, lr_op = train_model(loss_sum, global_step, num_train_file, args)
 
         list_ops['landmarks'] = landmarks_pre
@@ -118,7 +108,6 @@ def main(args):
         list_ops['train_op'] = train_op
         list_ops['lr_op'] = lr_op
 
-        # tensorboard 预显示的loss信息定义
         test_mean_error = tf.Variable(tf.constant(0.0), dtype=tf.float32, name='ME')
         test_failure_rate = tf.Variable(tf.constant(0.0), dtype=tf.float32, name='FR')
         test_10_loss = tf.Variable(tf.constant(0.0), dtype=tf.float32, name='TestLoss')
@@ -134,16 +123,13 @@ def main(args):
         saver = tf.train.Saver(save_params, max_to_keep=None)
         gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=1.0)
 
-        # 创建会话session
         sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options,allow_soft_placement=False,log_device_placement=False))
         sess.run(tf.global_variables_initializer())
         sess.run(tf.local_variables_initializer())
 
-        # session 的正式内容
         with sess.as_default():
             epoch_start = 0
             if args.pretrained_model:
-                # 设置了预训练模型参数
                 pretrained_model = args.pretrained_model
                 if (not os.path.isdir(pretrained_model)):
                     print('Restoring pretrained model: {}'.format(pretrained_model))
@@ -353,7 +339,7 @@ def parse_arguments(argv):
     parser.add_argument('--batch_size', type=int, default=64)
     parser.add_argument('--pretrained_model', type=str, default='models1/model_test')
     parser.add_argument('--model_dir', type=str, default='models1/model_test')
-    parser.add_argument('--learning_rate', type=float, default=0.000001)
+    parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--lr_epoch', type=str, default='10,20,30,40,200,500')
     parser.add_argument('--weight_decay', type=float, default=5e-5)
     parser.add_argument('--level', type=str, default='L5')
