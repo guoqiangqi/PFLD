@@ -192,6 +192,11 @@ def train(sess, epoch_size, epoch, list_ops):
         #204: 遮挡(occlusion)    0->无遮挡(no occlusion)           1->遮挡(occlusion)
         #205: 模糊(blur)         0->清晰(clear)                    1->模糊(blur)
         '''
+        ###############################################################
+        ##下面代码由于在循环中定义了op，会造成内存泄漏，将代码放到循环外即可#
+        ##只在循环中时调用sess.run()                                   
+        ##需要当前batch的信息，使用tf.palceholder()                      
+        ###############################################################
         attributes_w_n = tf.to_float(attributes[:, 1:6])
         # _num = attributes_w_n.shape[0]
         mat_ratio = tf.reduce_mean(attributes_w_n,axis=0)
