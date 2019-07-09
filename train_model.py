@@ -50,8 +50,6 @@ def main(args):
         # assert not os.path.exists(model_dir)
         # os.mkdir(model_dir)
 
-
-
         print('Total number of examples: {}'.format(num_train_file))
         print('Test number of examples: {}'.format(num_test_file))
         print('Model dir: {}'.format(model_dir))
@@ -73,13 +71,11 @@ def main(args):
         landmark_batch = tf.placeholder(tf.float32, shape=(None, 196), name='landmark_batch')
         attribute_batch = tf.placeholder(tf.int32,  shape=(None, 6), name='attribute_batch')
         euler_angles_gt_batch = tf.placeholder(tf.float32,  shape=(None, 3), name='euler_angles_gt_batch')
-        w_n = tf.placeholder(tf.float32,shape=(None),name='w_n')
         
         list_ops['image_batch'] = image_batch
         list_ops['landmark_batch'] = landmark_batch
         list_ops['attribute_batch'] = attribute_batch
         list_ops['euler_angles_gt_batch'] = euler_angles_gt_batch
-        list_ops['w_n'] = w_n
 
         phase_train_placeholder = tf.placeholder(tf.bool, name='phase_train')
         list_ops['phase_train_placeholder'] = phase_train_placeholder
@@ -90,16 +86,20 @@ def main(args):
         landmarks_pre, landmarks_loss, euler_angles_pre = create_model(image_batch, landmark_batch,\
                                                                               phase_train_placeholder, args)
 
+        attributes_w_n = tf.to_float(attribute_batch[:, 1:6])
+        # _num = attributes_w_n.shape[0]
+        mat_ratio = tf.reduce_mean(attributes_w_n,axis=0)  
+        mat_ratio = tf.map_fn(lambda x:(tf.cond(x > 0,lambda: 1/x,lambda:float(args.batch_size))),mat_ratio)      
+        attributes_w_n = tf.convert_to_tensor(attributes_w_n * mat_ratio)
+        attributes_w_n = tf.reduce_sum(attributes_w_n,axis=1)
+        list_ops['attributes_w_n_batch']=attributes_w_n                                                                                
+                                                                              
         L2_loss = tf.add_n(tf.losses.get_regularization_losses())
-
         _sum_k = tf.reduce_sum(tf.map_fn(lambda x: 1 - tf.cos(abs(x)), euler_angles_gt_batch - euler_angles_pre), axis=1)
-
         loss_sum = tf.reduce_sum(tf.square(landmark_batch - landmarks_pre), axis=1)
-
-        loss_sum = tf.reduce_mean(loss_sum*_sum_k*w_n)
-
+        loss_sum = tf.reduce_mean(loss_sum*_sum_k*attributes_w_n)
         loss_sum += L2_loss
-
+        
         train_op, lr_op = train_model(loss_sum, global_step, num_train_file, args)
 
         list_ops['landmarks'] = landmarks_pre
@@ -192,24 +192,9 @@ def train(sess, epoch_size, epoch, list_ops):
         #204: 遮挡(occlusion)    0->无遮挡(no occlusion)           1->遮挡(occlusion)
         #205: 模糊(blur)         0->清晰(clear)                    1->模糊(blur)
         '''
-        ###############################################################
-        ##下面代码由于在循环中定义了op，会造成内存泄漏，将代码放到循环外即可#
-        ##只在循环中时调用sess.run()                                   
-        ##需要当前batch的信息，使用tf.palceholder()                      
-        ###############################################################
-        attributes_w_n = tf.to_float(attributes[:, 1:6])
-        # _num = attributes_w_n.shape[0]
-        mat_ratio = tf.reduce_mean(attributes_w_n,axis=0)
-        # TODO when use function tf.map_fn get error results [inf,nan]
-        # mat_ratio = tf.map_fn(lambda x:1.0/x if not x==0.0 else 0.0,mat_ratio)
-        mat_ratio = list(map(lambda x: 1.0 / x if not x == 0.0 else float(images.shape[0]), sess.run(mat_ratio)))
-        attributes_w_n = attributes_w_n * mat_ratio
-        attributes_w_n = tf.reduce_sum(attributes_w_n,axis=1)
-        # attributes_w_n = tf.expand_dims(attributes_w_n,1)
-        # attributes_w_n = tf.tile(attributes_w_n,[_num])
-        #TODO change the value of the zero in mat
-        attributes_w_n = sess.run(attributes_w_n)
-
+       
+        attributes_w_n = sess.run(list_ops['attributes_w_n_batch'],feed_dict={list_ops['image_batch']: images,
+                                                                              list_ops['attribute_batch']: attributes})
 
         feed_dict = {
             list_ops['image_batch']: images,
@@ -217,7 +202,7 @@ def train(sess, epoch_size, epoch, list_ops):
             list_ops['attribute_batch']: attributes,
             list_ops['phase_train_placeholder']: True,
             list_ops['euler_angles_gt_batch'] : eulers,
-            list_ops['w_n']: attributes_w_n
+            list_ops['attributes_w_n_batch']: attributes_w_n
         }
         loss, _, lr, L2_loss = sess.run([list_ops['loss'], list_ops['train_op'], list_ops['lr_op'],\
                         list_ops['L2_loss']], feed_dict=feed_dict)
