@@ -36,8 +36,8 @@ def gen_data(file_list):
         line = line.strip().split()
         path = line[0]
         landmark = line[1:197]
-        attribute = line[197:200]
-        euler_angle = line[200:203]
+        attribute = line[197:203]
+        euler_angle = line[203:206]
 
         landmark = np.asarray(landmark, dtype=np.float32)
         attribute = np.asarray(attribute, dtype=np.int32)
