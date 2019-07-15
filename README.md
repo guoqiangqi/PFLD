@@ -6,9 +6,9 @@ Table 2:
   I`ve done the job and fixed the memory leak bug:
   The code has a flaw that i calculate euler angles ground-truth while training process,so the training speed have slowed down because  some work have to be finished on the cpu ,you should calculate the euler angles in the preprocess code  
     
-EASY TO TRAIN:  
->>STEP1:data/SetPreparation.py  
->>STEP2:train.sh
+'EASY TO TRAIN:'  
+>STEP1:data/SetPreparation.py  
+>STEP2:train.sh
   
   
 SAMPLE IMGS:  
