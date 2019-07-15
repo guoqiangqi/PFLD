@@ -245,7 +245,7 @@ def pfld_inference(input, weight_decay, batch_norm_params):
             conv3_2 = slim.separable_convolution2d(conv3_2, num_outputs=None, stride=1, depth_multiplier=1,
                                                    kernel_size=[3, 3], scope='conv3_2/dwise')
             print(conv3_2.name, conv3_2.get_shape())
-            conv3_2 = slim.convolution2d(conv3_1, 64*coefficient, [1, 1], stride=1, activation_fn=None,scope='conv3_2/linear')
+            conv3_2 = slim.convolution2d(conv3_2, 64*coefficient, [1, 1], stride=1, activation_fn=None,scope='conv3_2/linear')
             print(conv3_2.name, conv3_2.get_shape())
 
             block3_2 = conv3_1 + conv3_2
