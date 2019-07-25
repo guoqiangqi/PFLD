@@ -327,7 +327,7 @@ def parse_arguments(argv):
     parser.add_argument('--image_size', type=int, default=112)
     parser.add_argument('--image_channels', type=int, default=3)
     parser.add_argument('--batch_size', type=int, default=64)
-    parser.add_argument('--pretrained_model', type=str, default='models1/model_test')
+    parser.add_argument('--pretrained_model', type=str, default=None)
     parser.add_argument('--model_dir', type=str, default='models1/model_test')
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--lr_epoch', type=str, default='10,20,30,40,200,500')
