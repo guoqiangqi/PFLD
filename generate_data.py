@@ -9,7 +9,7 @@ def DateSet(file_list, args, debug=False):
         file_list = file_list[:n]
         landmarks = landmarks[:n]
         attributes = attributes[:n]
-
+        euler_angles=euler_angles[:n]
     dataset = tf.data.Dataset.from_tensor_slices((file_list, landmarks, attributes,euler_angles))
 
     def _parse_data(filename, landmarks, attributes,euler_angles):
