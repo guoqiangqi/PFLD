@@ -373,7 +373,7 @@ def pfld_inference(input, weight_decay, batch_norm_params):
             print(conv7.name, conv7.get_shape())
 
             #7*7*32
-            conv8 = slim.convolution2d(conv7, 128*coefficient, [7, 7], stride=1, activation_fn=None,scope='conv8')
+            conv8 = slim.convolution2d(conv7, 128*coefficient, [7, 7], stride=1, activation_fn=None,padding='VALID',scope='conv8')
             print(conv8.name, conv8.get_shape())
 
             avg_pool1 = slim.avg_pool2d(conv6_1, [conv6_1.get_shape()[1], conv6_1.get_shape()[2]], stride=1)
