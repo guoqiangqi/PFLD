@@ -195,11 +195,11 @@ def get_dataset_list(imgDir, outDir, landmarkDir, is_train):
 
 if __name__ == '__main__':
     root_dir = os.path.dirname(os.path.realpath(__file__))
-    imageDirs = '/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_images'
-    Mirror_file = 'Mirror98.txt'
+    imageDirs = './data/WFLW_images'
+    Mirror_file = './data/Mirror98.txt'
 
-    landmarkDirs = ['/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
-                    '/media/luckynote/Data/face-recognition/face-dataset/landmarks/98/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
+    landmarkDirs = ['./data/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_test.txt',
+                    './data/WFLW_annotations/list_98pt_rect_attr_train_test/list_98pt_rect_attr_train.txt']
 
     outDirs = ['test_data', 'train_data']
     for landmarkDir, outDir in zip(landmarkDirs, outDirs):
