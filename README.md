@@ -23,4 +23,4 @@ SAMPLE IMGS:
         
  SAMPLE VIDEO:  
 
- ![Image text](https://github.com/guoqiangqi/PFLD/blob/master/data/sample_imgs/ucgif_20190809191932.gif)
+ ![Image text](data/sample_imgs/ucgif_20190809191932.gif)
