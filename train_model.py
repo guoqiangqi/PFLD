@@ -273,14 +273,14 @@ def test(sess, list_ops, args):
         #         image_save_name = os.path.join(image_save_path, '{}.jpg'.format(j))
         #         cv2.imwrite(image_save_name, image_i)
 
-    loss = loss_sum/(epoch_size*args.batch_size)
+    loss = loss_sum/(list_ops['num_test_file'] * 1.0)
     print('Test epochs: {}\tLoss {:2.3f}'.format(epoch_size, loss))
     
     print('mean error and failure rate')
-    landmark_error_norm = landmark_error/(epoch_size*args.batch_size)
+    landmark_error_norm = landmark_error/(list_ops['num_test_file'] * 1.0)
     error_str ='mean error : {:2.3f}'.format(landmark_error_norm)
 
-    failure_rate_norm =landmark_01_num/(epoch_size*args.batch_size)
+    failure_rate_norm =landmark_01_num/(list_ops['num_test_file'] * 1.0)
     failure_rate_str ='failure rate: L1 {:2.3f}'.format(failure_rate_norm)
     print(error_str+'\n'+failure_rate_str+'\n')
 
