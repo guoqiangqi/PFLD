@@ -225,7 +225,7 @@ def test(sess, list_ops, args):
     landmark_error = 0
     landmark_01_num=0
 
-    epoch_size = list_ops['num_test_file'] // args.batch_size
+    epoch_size = math.ceil(list_ops['num_test_file'] * 1.0 / args.batch_size)
     for i in range(epoch_size): #batch_num
         images, landmarks, attributes, eulers = sess.run([image_batch, landmarks_batch, attribute_batch, euler_batch])
         feed_dict = {
