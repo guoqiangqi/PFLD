@@ -7,7 +7,7 @@ Table 2:
   The code has a flaw that i calculate euler angles ground-truth while training process,so the training speed have slowed down because  some work have to be finished on the cpu ,you should calculate the euler angles in the preprocess code    
       
 Table 3：It is an open surce program reference to https://arxiv.org/pdf/1902.10859.pdf , if you find any bugs or anything incorrect,you can notice it in the issues and pull request,be glad to receive you advices.     
-And thanks @lucknote for helping fix existing bugs.
+And thanks @lucknote for helping fixing existing bugs.
   
 EASY TO TRAIN:
 >STEP1:data/SetPreparation.py  
