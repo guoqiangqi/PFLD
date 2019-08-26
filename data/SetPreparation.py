@@ -155,9 +155,10 @@ class ImageDate():
             assert not os.path.exists(save_path), save_path
             cv2.imwrite(save_path, img)
 
-            euler_angles_landmark = []
+            
+            s_landmark = []
             for index in TRACKED_POINTS:
-                euler_angles_landmark.append(lanmark[index])
+                euler_angles_landmark.append(lanmark[index][0]*img.shape[0],lanmark[index][1]*img.shape[1])
             euler_angles_landmark = np.asarray(euler_angles_landmark).reshape((-1, 28))
             pitch, yaw, roll = calculate_pitch_yaw_roll(euler_angles_landmark[0],self.image_size,self.image_size)
             euler_angles = np.asarray((pitch, yaw, roll), dtype=np.float32)
