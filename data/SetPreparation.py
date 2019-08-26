@@ -149,8 +149,8 @@ class ImageDate():
         attributes_str = ' '.join(list(map(str, attributes)))
         labels = []
         TRACKED_POINTS = [33, 38, 50, 46, 60, 64, 68, 72, 55, 59, 76, 82, 85, 16]
-        for i, (img, lanmark) in enumerate(zip(self.imgs, self.landmarks)):
-            assert lanmark.shape == (98, 2)
+        for i, (img, landmark) in enumerate(zip(self.imgs, self.landmarks)):
+            assert landmark.shape == (98, 2)
             save_path = os.path.join(path, prefix+'_'+str(i)+'.png')
             assert not os.path.exists(save_path), save_path
             cv2.imwrite(save_path, img)
@@ -158,13 +158,13 @@ class ImageDate():
             
             s_landmark = []
             for index in TRACKED_POINTS:
-                euler_angles_landmark.append(lanmark[index][0]*img.shape[0],lanmark[index][1]*img.shape[1])
+                euler_angles_landmark.append(landmark[index][0]*img.shape[0],landmark[index][1]*img.shape[1])
             euler_angles_landmark = np.asarray(euler_angles_landmark).reshape((-1, 28))
             pitch, yaw, roll = calculate_pitch_yaw_roll(euler_angles_landmark[0],self.image_size,self.image_size)
             euler_angles = np.asarray((pitch, yaw, roll), dtype=np.float32)
             euler_angles_str = ' '.join(list(map(str, euler_angles)))
 
-            landmark_str = ' '.join(list(map(str,lanmark.reshape(-1).tolist())))
+            landmark_str = ' '.join(list(map(str,landmark.reshape(-1).tolist())))
 
             label = '{} {} {} {}\n'.format(save_path, landmark_str, attributes_str, euler_angles_str)
             labels.append(label)
