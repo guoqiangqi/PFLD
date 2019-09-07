@@ -156,7 +156,7 @@ class ImageDate():
             cv2.imwrite(save_path, img)
 
             
-            s_landmark = []
+            euler_angles_landmark = []
             for index in TRACKED_POINTS:
                 euler_angles_landmark.append([landmark[index][0]*img.shape[0],landmark[index][1]*img.shape[1]])
             euler_angles_landmark = np.asarray(euler_angles_landmark).reshape((-1, 28))
