@@ -1,0 +1,110 @@
+/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/importlib/_bootstrap.py:219: RuntimeWarning: compiletime version 3.5 of module 'tensorflow.python.framework.fast_tensor_util' does not match runtime version 3.6
+  return f(*args, **kwds)
+['train_model.py', '--model_dir=./models2/model4', '--pretrained_model=', '--learning_rate=0.000000001', '--level=L1', '--debug=False', '--image_size=112', '--batch_size=128']
+Namespace(batch_size=128, debug='False', file_list='data/train_data/list.txt', image_channels=3, image_size=112, learning_rate=1e-09, level='L1', lr_epoch='10,20,30,40,200,500', max_epoch=1000, model_dir='./models2/model4', pretrained_model='', save_image_example=True, seed=666, test_list='data/test_data/list.txt', weight_decay=5e-05)
+Total number of examples: 75000
+Test number of examples: 2500
+Model dir: ./models2/model4
+Number of batches per epoch: 585
+Building training graph.
+PFLD input shape(image_batch:0): (?, 112, 112, 3)
+pfld_inference/conv_1/Relu6:0 (?, 56, 56, 64)
+pfld_inference/conv2/dwise/Relu6:0 (?, 56, 56, 64)
+pfld_inference/conv3_1/expand/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_1/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_1/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/conv3_2/expand/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_2/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_2/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add:0 (?, 28, 28, 64)
+pfld_inference/conv3_3/expand/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_3/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_3linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_1:0 (?, 28, 28, 64)
+pfld_inference/conv3_4/expand/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_4/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_4/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_2:0 (?, 28, 28, 64)
+pfld_inference/conv3_5/expand/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_5/dwise/Relu6:0 (?, 28, 28, 128)
+pfld_inference/conv3_5/linear/BatchNorm/cond_1/Merge:0 (?, 28, 28, 64)
+pfld_inference/add_3:0 (?, 28, 28, 64)
+pfld_inference/conv4_1/expand/Relu6:0 (?, 14, 14, 128)
+pfld_inference/conv4_1/dwise/Relu6:0 (?, 14, 14, 128)
+pfld_inference/conv4_1/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/conv5_1/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_1/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_1/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/conv5_2/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_2/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_2/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/add_4:0 (?, 14, 14, 128)
+pfld_inference/conv5_3/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_3/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_3/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/add_5:0 (?, 14, 14, 128)
+pfld_inference/conv5_4/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_4/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_4/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/add_6:0 (?, 14, 14, 128)
+pfld_inference/conv5_5/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_5/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_5/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/add_7:0 (?, 14, 14, 128)
+pfld_inference/conv5_6/expand/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_6/dwise/Relu6:0 (?, 14, 14, 512)
+pfld_inference/conv5_6/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 128)
+pfld_inference/add_8:0 (?, 14, 14, 128)
+pfld_inference/conv6_1/expand/Relu6:0 (?, 14, 14, 256)
+pfld_inference/conv6_1/dwise/Relu6:0 (?, 14, 14, 256)
+pfld_inference/conv6_1/linear/BatchNorm/cond_1/Merge:0 (?, 14, 14, 16)
+pfld_inference/conv7/Relu6:0 (?, 7, 7, 32)
+pfld_inference/conv8/Relu6:0 (?, 1, 1, 128)
+pfld_inference/AvgPool2D/AvgPool:0 (?, 1, 1, 16)
+pfld_inference/AvgPool2D_1/AvgPool:0 (?, 1, 1, 32)
+
+auxiliary net
+pfld_conv1/Relu:0 (?, 14, 14, 128)
+pfld_conv2/Relu:0 (?, 14, 14, 128)
+pfld_conv3/Relu:0 (?, 7, 7, 32)
+pfld_conv4/Relu:0 (?, 7, 7, 128)
+pool1/MaxPool:0 (?, 7, 7, 128)
+Flatten/flatten/Reshape:0 (?, 6272)
+pfld_fc1/BatchNorm/Reshape_1:0 (?, 32)
+pfld_fc2/BatchNorm/Reshape_1:0 (?, 3)
+2019-09-27 19:38:05.259403: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+Running train.
+2019-09-27 19:38:15.615959: W tensorflow/core/framework/op_kernel.cc:1192] Not found: /Users/0frz18064/Documents/PFLD/train_data/imgs/0_51_Dresses_wearingdress_51_377_0.png; No such file or directory
+2019-09-27 19:38:15.616358: W tensorflow/core/framework/op_kernel.cc:1192] Not found: /Users/0frz18064/Documents/PFLD/train_data/imgs/0_51_Dresses_wearingdress_51_377_0.png; No such file or directory
+	 [[Node: ReadFile = ReadFile[](arg0)]]
+Traceback (most recent call last):
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
+    return fn(*args)
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1302, in _run_fn
+    status, run_metadata)
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 473, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.NotFoundError: /Users/0frz18064/Documents/PFLD/train_data/imgs/0_51_Dresses_wearingdress_51_377_0.png; No such file or directory
+	 [[Node: ReadFile = ReadFile[](arg0)]]
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,112,112,3], [?,196], [?,6], [?,3]], output_types=[DT_FLOAT, DT_FLOAT, DT_INT32, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](OneShotIterator)]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "train_model.py", line 342, in <module>
+    main(parse_arguments(sys.argv[1:]))
+  File "train_model.py", line 155, in main
+    train_L, train_L2 = train(sess, epoch_size, epoch, list_ops)
+  File "train_model.py", line 184, in train
+    images, landmarks, attributes, eulers = sess.run([image_batch, landmarks_batch, attribute_batch, euler_batch])
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1120, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1317, in _do_run
+    options, run_metadata)
+  File "/Users/0frz18064/.local/share/virtualenvs/PFLD-an-OkDBc/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1336, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.NotFoundError: /Users/0frz18064/Documents/PFLD/train_data/imgs/0_51_Dresses_wearingdress_51_377_0.png; No such file or directory
+	 [[Node: ReadFile = ReadFile[](arg0)]]
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,112,112,3], [?,196], [?,6], [?,3]], output_types=[DT_FLOAT, DT_FLOAT, DT_INT32, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](OneShotIterator)]]
