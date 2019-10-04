@@ -131,6 +131,7 @@ def main(args):
             epoch_start = 0
             if args.pretrained_model:
                 pretrained_model = args.pretrained_model
+                print("path: ", os.path.isdir(pretrained_model))
                 if (not os.path.isdir(pretrained_model)):
                     print('Restoring pretrained model: {}'.format(pretrained_model))
                     saver.restore(sess, args.pretrained_model)
