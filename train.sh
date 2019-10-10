@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-save_model=./models2/save_model
-pre_model=./models2/pre_model
-logs=./models2/log4.txt
+save_model=./models2/1010/save_model
+pre_model=./models2/1004/pre_model
+logs=./models2/log_1010.txt
 lr=0.000000001
 
 CUDA_VISIBLE_DEVICES='' \

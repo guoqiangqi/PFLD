@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import os
 # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
-print('pid: {}     GPU: {}'.format(os.getpid(), os.environ['CUDA_VISIBLE_DEVICES']))
+# print('pid: {}     GPU: {}'.format(os.getpid(), os.environ['CUDA_VISIBLE_DEVICES']))
 import tensorflow as tf
 import numpy as np
 import cv2
@@ -12,14 +12,15 @@ import cv2
 from generate_data import gen_data
 
 def main():
-    meta_file = './models2/model0/model.meta'
-    ckpt_file = './models2/model0/model.ckpt-0'
+    target = "1010"
+    meta_file = './models2/models/model.meta'
+    ckpt_file = './models2/models/model.ckpt-195'
     # test_list = './data/300w_image_list.txt'
 
     image_size = 112
 
-    image_files = 'data/test_data/list.txt'
-    out_dir = 'result'
+    image_files = 'data/test_data/list_sample.txt'
+    out_dir = 'result/' + target
     if not os.path.exists(out_dir):
         os.mkdir(out_dir)
 
@@ -32,13 +33,17 @@ def main():
             graph = tf.get_default_graph()
             images_placeholder = graph.get_tensor_by_name('image_batch:0')
             phase_train_placeholder = graph.get_tensor_by_name('phase_train:0')
+            import pdb;pdb.set_trace()
 
+            """
             landmark_L1 = graph.get_tensor_by_name('landmark_L1:0')
             landmark_L2 = graph.get_tensor_by_name('landmark_L2:0')
             landmark_L3 = graph.get_tensor_by_name('landmark_L3:0')
             landmark_L4 = graph.get_tensor_by_name('landmark_L4:0')
             landmark_L5 = graph.get_tensor_by_name('landmark_L5:0')
             landmark_total = [landmark_L1, landmark_L2, landmark_L3, landmark_L4, landmark_L5]
+            """
+            landmark_total = graph.get_tensor_by_name('pfld_inference/fc/BiasAdd:0')
 
             file_list, train_landmarks, train_attributes = gen_data(image_files)
             print(file_list)

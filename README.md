@@ -1,4 +1,9 @@
 # PFLD
+
+## run by CPU
+CUDA_VISIBLE_DEVICES= python test_model.py
+
+## original README
 Table 1:  
   The code for cauculating euler angles prediction loss have been released.
 
