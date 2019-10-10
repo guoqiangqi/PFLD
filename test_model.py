@@ -33,7 +33,6 @@ def main():
             graph = tf.get_default_graph()
             images_placeholder = graph.get_tensor_by_name('image_batch:0')
             phase_train_placeholder = graph.get_tensor_by_name('phase_train:0')
-            import pdb;pdb.set_trace()
 
             """
             landmark_L1 = graph.get_tensor_by_name('landmark_L1:0')
@@ -45,7 +44,7 @@ def main():
             """
             landmark_total = graph.get_tensor_by_name('pfld_inference/fc/BiasAdd:0')
 
-            file_list, train_landmarks, train_attributes = gen_data(image_files)
+            file_list, train_landmarks, train_attributes, euler_angles = gen_data(image_files)
             print(file_list)
             for file in file_list:
                 filename = os.path.split(file)[-1]
@@ -55,23 +54,25 @@ def main():
                 input = cv2.resize(input, (image_size, image_size))
                 input = input.astype(np.float32)/256.0
                 input = np.expand_dims(input, 0)
-                print(input.shape)
+                # print(input.shape)
 
                 feed_dict = {
                     images_placeholder: input,
                     phase_train_placeholder: False
                 }
 
+                import time
+                st = time.time()
                 pre_landmarks = sess.run(landmark_total, feed_dict=feed_dict)
-                print(pre_landmarks)
+                # print(pre_landmarks)
+                print("elaps: ", time.time() - st)
                 pre_landmark = pre_landmarks[0]
 
                 h, w, _ = image.shape
                 pre_landmark = pre_landmark.reshape(-1, 2) * [h, w]
                 for (x, y) in pre_landmark.astype(np.int32):
                     cv2.circle(image, (x, y), 1, (0, 0, 255))
-                cv2.imshow('0', image)
-                cv2.waitKey(0)
+                print(os.path.join(out_dir, filename))
                 cv2.imwrite(os.path.join(out_dir, filename), image)
 
 if __name__ == '__main__':

@@ -51,7 +51,7 @@ def gen_data(file_list):
     landmarks = np.asarray(landmarks, dtype=np.float32)
     attributes = np.asarray(attributes, dtype=np.int32)
     euler_angles = np.asarray(euler_angles,dtype=np.float32)
-    return (filenames, landmarks, attributes,euler_angles)
+    return (filenames, landmarks, attributes, euler_angles)
 
 
 if __name__ == '__main__':
