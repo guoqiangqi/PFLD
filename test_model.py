@@ -40,7 +40,7 @@ def main():
             landmark_L5 = graph.get_tensor_by_name('landmark_L5:0')
             landmark_total = [landmark_L1, landmark_L2, landmark_L3, landmark_L4, landmark_L5]
 
-            file_list, train_landmarks, train_attributes = gen_data(image_files)
+            file_list, train_landmarks, train_attributes, train_euler_angles = gen_data(image_files)
             print(file_list)
             for file in file_list:
                 filename = os.path.split(file)[-1]
