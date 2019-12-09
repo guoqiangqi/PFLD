@@ -27,5 +27,7 @@ SAMPLE IMGS:
  SAMPLE VIDEO:  
 
  ![Image text](data/sample_imgs/ucgif_20190809185908.gif)
+ 
+ CONTACT US:
 
 If you have any questiones ,please contact us! Also join our QQ group(945933636) for more information.
