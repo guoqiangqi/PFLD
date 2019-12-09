@@ -28,4 +28,4 @@ SAMPLE IMGS:
 
  ![Image text](data/sample_imgs/ucgif_20190809185908.gif)
 
-Any questiones?Contact us ! QQ group:945933636
+If you have any questiones ,please contact us! Also join our QQ group(945933636) for more information.
