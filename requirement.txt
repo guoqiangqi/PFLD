@@ -5,7 +5,7 @@ backports.weakref==1.0.post1
 bleach==3.3.0
 cloudpickle==0.8.0
 cycler==0.10.0
-dask==1.1.4
+dask==2021.10.0
 decorator==4.3.2
 enum34==1.1.6
 funcsigs==1.0.2
